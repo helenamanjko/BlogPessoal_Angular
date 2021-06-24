@@ -1,0 +1,27 @@
+ul.social {
+  list-style: none;
+  padding: 0;
+}
+
+ul.social li {
+  display: inline;
+  margin: 0;
+  padding: 3px;
+}
+.fa {
+  font-size: 25pt;
+  padding: 5px;
+  color: white;
+}
+.fa-facebook-square:hover {
+  color: darkslategray;
+}
+.fa-instagram:hover {
+  color: darkslategray;
+}
+.fa-github-square:hover {
+  color: darkslategray;
+}
+.fa-linkedin-square:hover {
+  color: darkslategray;
+}
