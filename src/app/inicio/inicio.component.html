@@ -1,1 +1,115 @@
-<p>inicio works!</p>
+<div class="container-fluid">
+  <div class="row bg align-items-center">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+          <h1 class="ft-30 text-white ml-2">Seja bem vindo(a)!</h1>
+          <h5 class="ft-15 text-white">- Deixe aqui seus pensamentos -</h5>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center mt-3 mb-5">
+        <div class="col-md-6">
+          <button
+            class="btn btn-outline-light mr-4"
+            data-toggle="modal"
+            data-target="#novapostagem"
+          >
+            Nova Postagem
+          </button>
+          <a class="btn btn-outline-light mr-4" href="#verPostagens"
+            >Ver Postagens</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container my-5" id="verPostagens">
+  <ul class="nav nav-tabs d-flex justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active text-secondary font-weight-bold" href="#"
+        >Todas as postagens</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-secondary font-weight-bold" href="#"
+        >Minhas postagens</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-secondary font-weight-bold" href="#"
+        >Postagens por tema</a
+      >
+    </li>
+  </ul>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="novapostagem"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Nova Postagem</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Fechar"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titulo"
+            placeholder="Digite o título"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="texto">Texto</label>
+          <textarea
+            class="form-control"
+            name="texto"
+            id="texto"
+            rows="5"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="texto"
+            >Escolha um tema ou
+            <a class="text-secondary" data-dismiss="modal" routerLink="/tema"
+              >cadastre um novo</a
+            >:
+          </label>
+          <select name="tema" id="tema" class="form-control">
+            <option value="">Tema</option>
+          </select>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            data-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-outline-danger">Postar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
