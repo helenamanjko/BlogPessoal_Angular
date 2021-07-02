@@ -45,15 +45,18 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Primeiro</th>
-            <th scope="col">Último</th>
+            <th scope="col">Descrição</th>
+            <th scope="col" class="text-right">Modificações</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let tema of listaTemas">
             <th>{{ tema.id }}</th>
             <th>{{ tema.descricao }}</th>
-            <td>Otto</td>
+            <td class="d-flex justify content end">
+              <button class="btn btn-outline-danger mr-3">Editar</button>
+              <button class="btn btn-outline-danger">Apagar</button>
+            </td>
           </tr>
         </tbody>
       </table>
