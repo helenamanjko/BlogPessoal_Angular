@@ -1,0 +1,30 @@
+<div class="container-fluid bg">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-md-12">
+      <h2 class="text-center mt-5 text-white">Deletando seu Tema</h2>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center mt-2">
+    <div class="col-md-8 mb-2">
+      <p class="text-white text-center">
+        Você tem certeza de que deseja apagar esse tema? Todas as postagens
+        relacionadas a ele serão apagadas também!
+      </p>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <h4 class="text-white text-center mb-5">Tema: {{ tema.descricao }}</h4>
+  </div>
+  <div class="container"><hr /></div>
+
+  <div class="row d-flex justify-content-center mt-5 mb-5">
+    <div class="col-md-6 d-flex justify-content-center mb-5">
+      <button class="btn btn-outline-danger mr-4" routerLink="/tema">
+        Não
+      </button>
+      <button class="btn btn-outline-danger" (click)="apagar()">Sim</button>
+    </div>
+  </div>
+</div>

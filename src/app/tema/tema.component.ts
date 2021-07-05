@@ -23,6 +23,8 @@ export class TemaComponent implements OnInit {
       this.router.navigate(['/entrar']);
     }
     console.log(environment);
+
+    this.temaService.refreshToken();
     this.findAllTemas();
   }
   findAllTemas() {
