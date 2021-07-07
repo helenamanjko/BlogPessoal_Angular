@@ -93,9 +93,9 @@
                 {{ item.data | date: "HH:mm" }}</small
               >
             </p>
-            <!--<p class="card-text">
+            <p class="card-text">
               <small class="text-muted">Por: {{ item.usuario.nome }}</small>
-            </p>-->
+            </p>
           </div>
         </div>
       </div>
@@ -120,6 +120,19 @@
                 {{ item.data | date: "HH:mm" }}</small
               >
             </p>
+
+            <a
+              [routerLink]="['/postagem-edit', item.id]"
+              class="text-dark mr-3"
+              href=""
+              >Editar</a
+            >
+            <a
+              [routerLink]="['/postagem-delete', item.id]"
+              class="text-dark mr-3"
+              href=""
+              >Apagar</a
+            >
           </div>
         </div>
       </div>
