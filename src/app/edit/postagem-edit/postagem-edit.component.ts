@@ -26,6 +26,8 @@ export class PostagemEditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    window.scroll(0, 0);
+
     if (environment.token == '') {
       alert('Sua sessão terminou!');
       this.router.navigate(['/entrar']);
@@ -33,8 +35,9 @@ export class PostagemEditComponent implements OnInit {
     this.temaService.refreshToken();
     this.postagemService.refreshToken();
 
-    this.findAllTemas();
     let id = this.route.snapshot.params['id'];
+    this.findByIdPostagem(id);
+    this.findAllTemas();
   }
 
   findByIdPostagem(id: number) {
