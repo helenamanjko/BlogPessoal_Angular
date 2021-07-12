@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { User } from '../model/User';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
@@ -17,25 +18,31 @@ import { TemaService } from '../service/tema.service';
 export class InicioComponent implements OnInit {
   postagem: Postagem = new Postagem();
   listaPostagem: Postagem[];
+  tituloPost: string;
 
   tema: Tema = new Tema();
   listaTema: Tema[];
   idTema: number;
+  nomeTema: string;
 
   user: User = new User();
   idUser = environment.id;
+
+  key = 'data';
+  reverse = true;
 
   constructor(
     private router: Router,
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertas: AlertasService
   ) {}
 
   ngOnInit() {
     window.scroll(0, 0);
     if (environment.token == '') {
-      alert('Sua sessão terminou!');
+      this.alertas.showAlertDanger('Sua sessão terminou!');
       this.router.navigate(['/entrar']);
     }
     this.temaService.refreshToken();
@@ -78,9 +85,33 @@ export class InicioComponent implements OnInit {
       .postPostagem(this.postagem)
       .subscribe((resp: Postagem) => {
         this.postagem = resp;
-        alert('Postagem cadastrada com sucesso!');
+        this.alertas.showAlertSecondary('Postagem cadastrada com sucesso!');
         this.postagem = new Postagem();
         this.getAllPostagens();
       });
+  }
+
+  findByTituloPostagem() {
+    if (this.tituloPost == '') {
+      this.getAllPostagens;
+    } else {
+      this.postagemService
+        .getByTituloPostagem(this.tituloPost)
+        .subscribe((resp: Postagem[]) => {
+          this.listaPostagem = resp;
+        });
+    }
+  }
+
+  findByNomeTema() {
+    if (this.nomeTema == '') {
+      this.getAllTemas();
+    } else {
+      this.temaService
+        .getByNomeTema(this.nomeTema)
+        .subscribe((resp: Tema[]) => {
+          this.listaTema = resp;
+        });
+    }
   }
 }

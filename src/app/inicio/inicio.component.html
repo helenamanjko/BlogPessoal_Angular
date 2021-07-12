@@ -79,22 +79,44 @@
       role="tabpanel"
       aria-labelledby="nav-todasPostagens-tab"
     >
+      <div class="row d-flex justify-content-center mt-5 mb-5">
+        <div class="com-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="titulo"
+              placeholder="Digite uma pesquisa"
+              [(ngModel)]="tituloPost"
+              (keyup)="findByTituloPostagem()"
+            />
+          </div>
+        </div>
+      </div>
+
       <div class="card-columns">
-        <div class="card text-center" *ngFor="let item of listaPostagem">
+        <div
+          class="card text-center"
+          *ngFor="let postagem of listaPostagem | orderBy: key:reverse"
+        >
           <div class="card-body">
-            <h5 class="card-title">{{ item.titulo }}</h5>
-            <small class="text-muted"> Tema: {{ item.tema.descricao }}</small>
+            <h5 class="card-title">{{ postagem.titulo }}</h5>
+            <!--;<small class="text-muted">
+              Tema: {{ postagem.tema.descricao }}</small
+            >-->
             <p class="card-text mt-3">
-              {{ item.texto }}
+              {{ postagem.texto }}
             </p>
             <p class="card-text">
               <small class="text-muted"
-                >{{ item.data | date: "dd/ MM / yyyy" }} às
-                {{ item.data | date: "HH:mm" }}</small
+                >{{ postagem.data | date: "dd/ MM / yyyy" }} às
+                {{ postagem.data | date: "HH:mm" }}</small
               >
             </p>
             <p class="card-text">
-              <small class="text-muted">Por: {{ item.usuario.nome }}</small>
+              <small class="text-muted"
+                >Por: {{ postagem.usuario.usuario }}</small
+              >
             </p>
           </div>
         </div>
@@ -107,7 +129,10 @@
       aria-labelledby="minhasPostagens-tab"
     >
       <div class="card-columns">
-        <div class="card text-center" *ngFor="let item of user.postagem">
+        <div
+          class="card text-center"
+          *ngFor="let item of user.postagem | orderBy: key:reverse"
+        >
           <div class="card-body">
             <h5 class="card-title">{{ item.titulo }}</h5>
             <small class="text-muted"> Tema: {{ item.tema.descricao }}</small>
@@ -143,7 +168,25 @@
       role="tabpanel"
       aria-labelledby="postagensTema-tab"
     >
-      <div class="card-columns" *ngFor="let tema of listaTema">
+      <div class="row d-flex justify-content-center mt-5 mb-5">
+        <div class="com-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="tema"
+              placeholder="Digite o tema"
+              [(ngModel)]="nomeTema"
+              (keyup)="findByNomeTema()"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card-columns"
+        *ngFor="let tema of listaTema | orderBy: key:reverse"
+      >
         <div class="card text-center" *ngFor="let item of tema.postagem">
           <div class="card-body">
             <h5 class="card-title">{{ item.titulo }}</h5>

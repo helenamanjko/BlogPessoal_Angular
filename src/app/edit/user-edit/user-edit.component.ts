@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -17,13 +18,14 @@ export class UserEditComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertas: AlertasService
   ) {}
 
   ngOnInit() {
     window.scroll(0, 0);
     if (environment.token == '') {
-      alert('Sua sessão terminou!');
+      this.alertas.showAlertDanger('Sua sessão terminou!');
       this.router.navigate(['/entrar']);
     }
 
@@ -42,12 +44,12 @@ export class UserEditComponent implements OnInit {
     this.user.tipo = this.tipoUsuario;
 
     if (this.user.senha != this.confirmarSenha) {
-      alert('As senhas estão incorretas!');
+      this.alertas.showAlertDanger('As senhas estão incorretas!');
     } else {
       this.authService.cadastrar(this.user).subscribe((resp: User) => {
         this.user = resp;
         this.router.navigate(['/entrar']);
-        alert('Usuário alterado com sucesso!');
+        this.alertas.showAlertSecondary('Usuário alterado com sucesso!');
         (environment.token = ''),
           (environment.nome = ''),
           (environment.id = 0),

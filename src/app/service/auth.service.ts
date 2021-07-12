@@ -17,7 +17,7 @@ export class AuthService {
 
   entrar(userlogin: UserLogin): Observable<UserLogin> {
     return this.http.post<UserLogin>(
-      'http://localhost:8080/usuarios/logar',
+      'https://genblogfaccipieri.herokuapp.com/usuarios/logar',
       userlogin
     );
   }
@@ -31,7 +31,7 @@ export class AuthService {
 
   getByIdUser(id: number): Observable<User> {
     return this.http.get<User>(
-      `http://localhost:8080/usuarios/${id}`,
+      `https://genblogfaccipieri.herokuapp.com/usuarios/${id}`,
       this.token
     );
   }
