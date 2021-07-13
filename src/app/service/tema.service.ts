@@ -38,33 +38,33 @@ export class TemaService {
 
   getAllTema(): Observable<Tema[]> {
     return this.http.get<Tema[]>(
-      'https://genblogfaccipieri.herokuapp.com/tema',
+      'https://dbmanjko.herokuapp.com/tema',
       this.token
     );
   }
   getByIdTema(id: number): Observable<Tema> {
     return this.http.get<Tema>(
-      `https://genblogfaccipieri.herokuapp.com/tema/${id}`,
+      `https://dbmanjko.herokuapp.com/tema/${id}`,
       this.token
     );
   }
 
   getByNomeTema(nome: string): Observable<Tema[]> {
     return this.http.get<Tema[]>(
-      `https://genblogfaccipieri.herokuapp.com/tema/nome/${nome}`,
+      `https://dbmanjko.herokuapp.com/tema/nome/${nome}`,
       this.token
     );
   }
   postTema(tema: Tema): Observable<Tema> {
     return this.http.post<Tema>(
-      'https://genblogfaccipieri.herokuapp.com/tema',
+      'https://dbmanjko.herokuapp.com/tema',
       tema,
       this.token
     );
   }
   putTema(tema: Tema): Observable<Tema> {
     return this.http.put<Tema>(
-      'https://genblogfaccipieri.herokuapp.com/tema',
+      'https://dbmanjko.herokuapp.com/tema',
       tema,
       this.token
     );
@@ -72,7 +72,7 @@ export class TemaService {
   deleteTema(id: number) {
     //template literals == uso da crase, passa variável no endereço ${variavel}
     return this.http.delete(
-      `https://genblogfaccipieri.herokuapp.com/tema/${id}`,
+      `https://dbmanjko.herokuapp.com/tema/${id}`,
       this.token
     );
   }

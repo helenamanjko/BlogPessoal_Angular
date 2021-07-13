@@ -17,21 +17,21 @@ export class AuthService {
 
   entrar(userlogin: UserLogin): Observable<UserLogin> {
     return this.http.post<UserLogin>(
-      'https://genblogfaccipieri.herokuapp.com/usuarios/logar',
+      'https://dbmanjko.herokuapp.com/usuarios/logar',
       userlogin
     );
   }
 
   cadastrar(user: User): Observable<User> {
     return this.http.post<User>(
-      'http://localhost:8080/usuarios/cadastrar',
+      'https://dbmanjko.herokuapp.com/usuarios/cadastrar',
       user
     );
   }
 
   getByIdUser(id: number): Observable<User> {
     return this.http.get<User>(
-      `https://genblogfaccipieri.herokuapp.com/usuarios/${id}`,
+      `https://dbmanjko.herokuapp.com/usuarios/${id}`,
       this.token
     );
   }
